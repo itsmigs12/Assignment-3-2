@@ -1,0 +1,28 @@
+In general, debugging this program was not as difficult as I thought it would be. In the beginning, I was running into several errors
+when it came to passing the values of the three integers into the other functions. 
+
+Example: void getinput(int a, int b, int c) <== Error: Not passing address of values
+
+One of the biggest mistakes I found while developing the program was not passing the addresses of the variables into the other functions.
+This caused my values to be always set to what I initialized them to be at the beginning of my code, 0. Regardless of the numbers the 
+user chose, the output for all three numbers would always be 0. Luckily, I was able to catch this error and was able to get the program
+to run properly. In addition, I also ran into a small barrier when it came to swapping the values of the three integers:
+
+Example: void swapvalues(int &s1, int &s2, int &s3)
+{
+  s1 = s3;
+  s2 = s3; <== Error: All numbers will be the same 
+  s3 = s1;
+}
+
+I tried to swap all the values directly by using the numbers passed in, but it would cause all the numbers to be equal to each other. Instead,
+I introduced a variable that holds one of the values of the numbers so I can assign it directly to one of the integers and avoid copying the same 
+number to another variable.
+
+Example: void swapvalues(int &s1, int &s2, int &s3)
+{
+int swapper = swap1;  <===== Note: Now I am able to swap the values of the variables without worrying about copying the same value to another variable.
+	swap1 = swap3; 
+	swap3 = swap2;
+	swap2 = swapper;
+}
